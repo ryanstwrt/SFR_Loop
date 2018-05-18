@@ -1,0 +1,65 @@
+SFR In-pile tube for 
+c cell cards
+1     1  -1         -1 -14 15      IMP:N=4  $ central sodium channel
+2     10  -8.47      -2 1 -14 15   IMP:N=8  $ Pressure tube (Stainless steel)
+3     3  -11.45e-4  -3 2 -14 15    IMP:N=16 $ Gas gap (N)
+4     10  -8.47      -4 3 -14 15   IMP:N=32 $ Envelope tube (Inconel 600)
+5     4  -13.2      -5 4 -14 15    IMP:N=64 $ hafnium thermal neutron  filter
+6     5   -1        -6 5 -14 15    IMP:N=64 $ water gap
+7     6  1.23e-2    -7 6 -14 15    IMP:N=64 $ Inner Booster fuel plate (U3Si2)**
+8     5   -1        -8 7 -14 15    IMP:N=32 $ water gap
+9     6  1.23e-2    -9 8 -14 15    IMP:N=16 $ Middle booster fuel plate
+10    5   -1         -10 9 -14 15  IMP:N=8  $ water gap
+11    6  1.23e-2     -11 10 -14 15 IMP:N=4  $ Outermost booster fuel plate
+12    5  -1          -12 11 -14 15 IMP:N=2  $ water gap outer fuel plate
+13    7 -2.7         -13 12 -14 15 IMP:N=1  $ aluminum baffle
+14    0              13:-15:14     IMP:N=0  $ ATR water outside **
+               
+C surface cards
+1     cz    9.68   $ inner edge of pressure tube
+2     cz   10.18  $ outer edge of pressure tube
+3     cz   10.28  $ inner edge of envelop tube 
+4     cz   10.6    $ inner edge of hafnium filter
+5     cz   10.7    $ outer edge of hafnium filter  
+6     cz   10.9    $ inner edge of inner fuel plate
+7     cz   11.1    $ outer edge of inner fuel plate
+8     cz   11.3    $ inner edge of middle fuel plate
+9     cz   11.5    $ outer edge of middle fuel plate
+10    cz   11.7    $ inner edge of outer fuel plate
+11    cz   11.9    $ outer edge of outer fuel plate 
+12    cz   12.1    $ Inner edge of the aluminum baffle
+13    cz  12.7    $ Diameter of the large I position of aluminum baffle)
+c end of concentric cylinders 
+14    pz   60.96  $ top of the core
+15    pz   -60.96 $ bottom of the core
+
+C Data cards
+sdef sur=D1 vec = 0 0 -1
+SI1 L 13
+SP1   1.0
+c pos = 0 0 0 axs = 0 0 1 rad = d2 ext = d3
+c SI1 L 1e-2 1e1
+c SP1 0.928962 0.071308
+c SI2 12.2 12.5
+c SP2 0 1.0
+c SI3 -30 30
+c SP3 -21 0
+FMESH4:N GEOM=xyz ORIGIN=0,0,-60 
+     imesh 6 iints 15
+	 jmesh 6 jints 15
+	 kmesh 120 kints 60
+F14:N 7
+F24:N 9
+F34:N 11
+nps 10e5
+M1    11023 1.00000        $ liquid sodium 
+c stainless steel 202
+m10 06000 -0.002000 14000 -0.004000 15031 -0.000300 
+     16000 -0.000200 23000 -0.003000 24000 -0.115000 25055 -0.006000 
+     26000 -0.849500 28000 -0.005000 42000 -0.010000 74000 -0.005000
+M3    7014 1.00000          $ Nitrogen gas
+M4    72178 1.00000         $ hafnium 
+M5    1001 0.66 8016 0.34
+M6    11023 1.00                $ The booster fuel 
+M7    13027 1.000000       $ aluminum 
+
